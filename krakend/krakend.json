@@ -1,0 +1,48 @@
+{
+  "version": 3,
+  "name": "KrakenD API Gateway",
+  "port": 8080,
+  "cache_ttl": "3600s",
+  "endpoints": [
+    {
+      "endpoint": "/auth/login",
+      "method": "POST",
+      "backend": [
+        {
+          "host": ["http://host.docker.internal:4000"],
+          "url_pattern": "/auth/login"
+        }
+      ]
+    },
+    {
+      "endpoint": "/auth/profile",
+      "input_headers": ["*"],
+      "method": "GET",
+      "backend": [
+        {
+          "host": ["http://host.docker.internal:4000"],
+          "url_pattern": "/auth/profile"
+        }
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://host.docker.internal:4000/static/symmetric.json",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      }
+    },
+    {
+      "endpoint": "/public/users",
+      "method": "GET",
+      "backend": [
+        {
+          "host": ["http://host.docker.internal:4000"],
+          "url_pattern": "/public/users"
+        }
+      ]
+    }
+  ]
+}

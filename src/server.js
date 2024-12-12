@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import authRoutes from "./routes/auth.router.js";
 import publicRoutes from "./routes/public.routes.js";
+import staticRoutes from "./routes/static.routes.js";
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.get("/", (req, res) => {
 
 app.use("/auth", authRoutes);
 app.use("/public", publicRoutes);
+app.use(staticRoutes);
 
 app.use((error, req, res, next) => {
   res.status(res.statusCode || 500).send({

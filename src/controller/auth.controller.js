@@ -10,14 +10,34 @@ export default class AuthController {
   }
 
   generateToken(payload) {
-    return jwt.sign(payload, "ABCD000012222KLU72221M776", {
-      expiresIn: "1h",
+    const access_token = jwt.sign(payload, "ABCD000012222KLU72221M776", {
+      expiresIn: "1d",
+      algorithm: "HS256",
+      header: {
+        kid: "sim2",
+      },
     });
+    const refresh_token = jwt.sign(payload, "XBCD000012222KLU72221M776", {
+      expiresIn: "30d",
+      algorithm: "HS256",
+      header: {
+        kid: "sim3",
+      },
+    });
+
+    const decodedAccessToken = jwt.decode(access_token);
+
+    return {
+      accessToken: access_token,
+      accessTokenExpiry: decodedAccessToken.exp,
+      refreshToken: refresh_token,
+    };
   }
 
   verifyToken(req) {
     const token = req.headers.authorization.split(" ")[1];
-    return jwt.verify(token, "ABCD000012222KLU72221M776");
+
+    return jwt.decode(token, "ABCD000012222KLU72221M776");
   }
 
   login(req, res, next) {
@@ -30,20 +50,11 @@ export default class AuthController {
 
       const user = users.find((user) => user.username === username);
 
-      console.log("Here", user);
-
       if (!user) {
         return next(new Error("User not found"));
       }
 
-      res.send({
-        message: "Login Route ✅",
-        data: {
-          token: this.generateToken({ id: user.id, username }),
-          user,
-        },
-        success: true,
-      });
+      res.send(this.generateToken({ id: user.id }));
     } catch (error) {
       console.log(error);
       return next(error);

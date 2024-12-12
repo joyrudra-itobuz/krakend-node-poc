@@ -1,0 +1,10 @@
+{
+  "keys": [
+    {
+      "kid": "sim2",
+      "kty": "oct",
+      "k": "QUJDRDAwMDAxMjIyMktMVTcyMjIxTTc3Ng==",
+      "alg": "HS256"
+    }
+  ]
+}
