@@ -5,22 +5,28 @@
   "cache_ttl": "3600s",
   "endpoints": [
     {
-      "endpoint": "/auth/login",
+      "endpoint": "/auth/login/4000",
       "method": "POST",
       "backend": [
         {
-          "host": ["http://host.docker.internal:4000"],
+          "host": [
+            "http://host.docker.internal:4000"
+          ],
           "url_pattern": "/auth/login"
         }
       ]
     },
     {
-      "endpoint": "/auth/profile",
-      "input_headers": ["*"],
+      "endpoint": "/auth/profile/4000",
+      "input_headers": [
+        "*"
+      ],
       "method": "GET",
       "backend": [
         {
-          "host": ["http://host.docker.internal:4000"],
+          "host": [
+            "http://host.docker.internal:4000"
+          ],
           "url_pattern": "/auth/profile"
         }
       ],
@@ -35,11 +41,109 @@
       }
     },
     {
-      "endpoint": "/public/users",
+      "endpoint": "/public/users/4000",
       "method": "GET",
       "backend": [
         {
-          "host": ["http://host.docker.internal:4000"],
+          "host": [
+            "http://host.docker.internal:4000"
+          ],
+          "url_pattern": "/public/users"
+        }
+      ]
+    },
+    {
+      "endpoint": "/auth/login/4040",
+      "method": "POST",
+      "backend": [
+        {
+          "host": [
+            "http://host.docker.internal:4040"
+          ],
+          "url_pattern": "/auth/login"
+        }
+      ]
+    },
+    {
+      "endpoint": "/auth/profile/4040",
+      "input_headers": [
+        "*"
+      ],
+      "method": "GET",
+      "backend": [
+        {
+          "host": [
+            "http://host.docker.internal:4040"
+          ],
+          "url_pattern": "/auth/profile"
+        }
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://host.docker.internal:4040/static/symmetric.json",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      }
+    },
+    {
+      "endpoint": "/public/users/4040",
+      "method": "GET",
+      "backend": [
+        {
+          "host": [
+            "http://host.docker.internal:4040"
+          ],
+          "url_pattern": "/public/users"
+        }
+      ]
+    },
+    {
+      "endpoint": "/auth/login/4080",
+      "method": "POST",
+      "backend": [
+        {
+          "host": [
+            "http://host.docker.internal:4080"
+          ],
+          "url_pattern": "/auth/login"
+        }
+      ]
+    },
+    {
+      "endpoint": "/auth/profile/4080",
+      "input_headers": [
+        "*"
+      ],
+      "method": "GET",
+      "backend": [
+        {
+          "host": [
+            "http://host.docker.internal:4080"
+          ],
+          "url_pattern": "/auth/profile"
+        }
+      ],
+      "extra_config": {
+        "auth/validator": {
+          "alg": "HS256",
+          "jwk_url": "http://host.docker.internal:4080/static/symmetric.json",
+          "cache": false,
+          "disable_jwk_security": true,
+          "operation_debug": true
+        }
+      }
+    },
+    {
+      "endpoint": "/public/users/4080",
+      "method": "GET",
+      "backend": [
+        {
+          "host": [
+            "http://host.docker.internal:4080"
+          ],
           "url_pattern": "/public/users"
         }
       ]

@@ -1,9 +1,10 @@
 {
-  "name": "noDemo",
+  "name": "no-demo",
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon apps/index.js"
+    "dev": "nodemon apps/index.js",
+    "build:krakend": "node build.js"
   },
   "dependencies": {
     "@types/express": "^5.0.0",
