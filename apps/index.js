@@ -1,7 +1,7 @@
-import server1 from "./app-4000/src/server.js";
-import server2 from "./app-4040/src/server.js";
-import server3 from "./app-4080/src/server.js";
+import server4000 from "./app-4000/src/server.js";
+import server4040 from "./app-4040/src/server.js";
+import server4080 from "./app-4080/src/server.js";
 
-server1();
-server2();
-server3();
+server4000();
+server4040();
+server4080();
