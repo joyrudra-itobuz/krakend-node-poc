@@ -3,7 +3,7 @@
   "type": "module",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon apps/index.js",
+    "dev": "nodemon --inspect apps/index.js",
     "build:krakend": "node build.js"
   },
   "dependencies": {

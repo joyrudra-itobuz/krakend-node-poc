@@ -1311,9 +1311,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"noDemo@workspace:.":
+"no-demo@workspace:.":
   version: 0.0.0-use.local
-  resolution: "noDemo@workspace:."
+  resolution: "no-demo@workspace:."
   dependencies:
     "@types/express": "npm:^5.0.0"
     cors: "npm:^2.8.5"
