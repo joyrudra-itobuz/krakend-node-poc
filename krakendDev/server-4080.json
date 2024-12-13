@@ -4,7 +4,7 @@
     "method": "POST",
     "backend": [
       {
-        "host": ["http://nodemo:4080"],
+        "host": ["http://host.docker.internal:4080"],
         "url_pattern": "/auth/login"
       }
     ]
@@ -15,14 +15,14 @@
     "method": "GET",
     "backend": [
       {
-        "host": ["http://nodemo:4080"],
+        "host": ["http://host.docker.internal:4080"],
         "url_pattern": "/auth/profile"
       }
     ],
     "extra_config": {
       "auth/validator": {
         "alg": "HS256",
-        "jwk_url": "http://nodemo:4080/static/symmetric.json",
+        "jwk_url": "http://host.docker.internal:4080/static/symmetric.json",
         "cache": false,
         "disable_jwk_security": true,
         "operation_debug": true
@@ -34,7 +34,7 @@
     "method": "GET",
     "backend": [
       {
-        "host": ["http://nodemo:4080"],
+        "host": ["http://host.docker.internal:4080"],
         "url_pattern": "/public/users"
       }
     ]

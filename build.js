@@ -1,6 +1,9 @@
 import fs from "node:fs/promises";
+import config from "./config.js";
 
-const path = `${process.cwd()}/krakend`;
+const path = `${process.cwd()}/${
+  Number(config.DEV_MODE) ? "krakendDev" : "krakend"
+}`;
 
 console.log(path);
 

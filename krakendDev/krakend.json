@@ -10,7 +10,7 @@
       "backend": [
         {
           "host": [
-            "http://nodemo:4000"
+            "http://host.docker.internal:4000"
           ],
           "url_pattern": "/auth/login"
         }
@@ -25,7 +25,7 @@
       "backend": [
         {
           "host": [
-            "http://nodemo:4000"
+            "http://host.docker.internal:4000"
           ],
           "url_pattern": "/auth/profile"
         }
@@ -33,7 +33,7 @@
       "extra_config": {
         "auth/validator": {
           "alg": "HS256",
-          "jwk_url": "http://nodemo:4000/static/symmetric.json",
+          "jwk_url": "http://host.docker.internal:4000/static/symmetric.json",
           "cache": false,
           "disable_jwk_security": true,
           "operation_debug": true
@@ -46,7 +46,7 @@
       "backend": [
         {
           "host": [
-            "http://nodemo:4000"
+            "http://host.docker.internal:4000"
           ],
           "url_pattern": "/public/users"
         }
@@ -58,7 +58,7 @@
       "backend": [
         {
           "host": [
-            "http://nodemo:4040"
+            "http://host.docker.internal:4040"
           ],
           "url_pattern": "/auth/login"
         }
@@ -73,7 +73,7 @@
       "backend": [
         {
           "host": [
-            "http://nodemo:4040"
+            "http://host.docker.internal:4040"
           ],
           "url_pattern": "/auth/profile"
         }
@@ -81,7 +81,7 @@
       "extra_config": {
         "auth/validator": {
           "alg": "HS256",
-          "jwk_url": "http://nodemo:4040/static/symmetric.json",
+          "jwk_url": "http://host.docker.internal:4040/static/symmetric.json",
           "cache": false,
           "disable_jwk_security": true,
           "operation_debug": true
@@ -94,7 +94,7 @@
       "backend": [
         {
           "host": [
-            "http://nodemo:4040"
+            "http://host.docker.internal:4040"
           ],
           "url_pattern": "/public/users"
         }
@@ -106,7 +106,7 @@
       "backend": [
         {
           "host": [
-            "http://nodemo:4080"
+            "http://host.docker.internal:4080"
           ],
           "url_pattern": "/auth/login"
         }
@@ -121,7 +121,7 @@
       "backend": [
         {
           "host": [
-            "http://nodemo:4080"
+            "http://host.docker.internal:4080"
           ],
           "url_pattern": "/auth/profile"
         }
@@ -129,7 +129,7 @@
       "extra_config": {
         "auth/validator": {
           "alg": "HS256",
-          "jwk_url": "http://nodemo:4080/static/symmetric.json",
+          "jwk_url": "http://host.docker.internal:4080/static/symmetric.json",
           "cache": false,
           "disable_jwk_security": true,
           "operation_debug": true
@@ -142,7 +142,7 @@
       "backend": [
         {
           "host": [
-            "http://nodemo:4080"
+            "http://host.docker.internal:4080"
           ],
           "url_pattern": "/public/users"
         }
