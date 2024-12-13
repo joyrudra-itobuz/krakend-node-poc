@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+  nodemo:
+    image: nodemo:latest
+    container_name: nodemo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    volumes:
+      - krakend-volume:/app/krakend
+
+  krakend:
+    image: devopsfaith/krakend:latest
+    container_name: krakend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - nodemo
+    volumes:
+      - krakend-volume:/etc/krakend
+    restart: always
+
+volumes:
+  krakend-volume:
+    driver: local
+# Old Working
+
+# version: "3.8"
+
+# services:
+#   nodemo:
+#     image: nodemo:latest
+#     container_name: nodemo
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     restart: always
+
+#   krakend:
+#     image: devopsfaith/krakend:latest
+#     container_name: krakend
+#     ports:
+#       - "8080:8080"
+#     depends_on:
+#       - nodemo
+#     volumes:
+#       - ./krakend/krakend.json:/etc/krakend/krakend.json
+#     restart: always

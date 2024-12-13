@@ -4,6 +4,8 @@ import authRoutes from "./routes/auth.router.js";
 import publicRoutes from "./routes/public.routes.js";
 import staticRoutes from "./routes/static.routes.js";
 
+const PORT = 4000;
+
 const app = express();
 
 app.use(express.json());
@@ -11,7 +13,7 @@ app.use(cors());
 
 app.get("/", (req, res) => {
   res.send({
-    message: "Server Is Up and Running ✅",
+    message: `Server Is Up and Running on ${PORT} ✅`,
     success: true,
   });
 });
@@ -27,6 +29,10 @@ app.use((error, req, res, next) => {
   });
 });
 
-app.listen(4000, () => {
-  console.log("Server is running on port http://localhost:4000 ✅");
-});
+function bootStrap() {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port http://localhost:${PORT} ✅`);
+  });
+}
+
+export default bootStrap;

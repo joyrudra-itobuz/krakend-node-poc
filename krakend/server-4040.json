@@ -1,0 +1,42 @@
+[
+  {
+    "endpoint": "/auth/login/4040",
+    "method": "POST",
+    "backend": [
+      {
+        "host": ["http://nodemo:4040"],
+        "url_pattern": "/auth/login"
+      }
+    ]
+  },
+  {
+    "endpoint": "/auth/profile/4040",
+    "input_headers": ["*"],
+    "method": "GET",
+    "backend": [
+      {
+        "host": ["http://nodemo:4040"],
+        "url_pattern": "/auth/profile"
+      }
+    ],
+    "extra_config": {
+      "auth/validator": {
+        "alg": "HS256",
+        "jwk_url": "http://nodemo:4040/static/symmetric.json",
+        "cache": false,
+        "disable_jwk_security": true,
+        "operation_debug": true
+      }
+    }
+  },
+  {
+    "endpoint": "/public/users/4040",
+    "method": "GET",
+    "backend": [
+      {
+        "host": ["http://nodemo:4040"],
+        "url_pattern": "/public/users"
+      }
+    ]
+  }
+]
